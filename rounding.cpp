@@ -18,24 +18,26 @@ void roundDec(float &decimalNum, float roundNum) {
 }
 
 int main() {
+    std::string userDecimalStr;
     float userDecimal;
+    std::string userRoundStr;
     int userRound;
+
+    // Getting input.
+    std::cout << "What decimal do you want to round?: ";
+    std::cin >> userDecimal;
+    std::cout << "What decimal place do you want to round it to?: ";
+    std::cin >> userRound;
+    roundDec(userDecimal, userRound);
     // Error checking
     try {
-        // Getting input.
-        std::cout << "What decimal do you want to round?: ";
-        std::cin >> userDecimal;
-        std::cout << "What decimal place do you want to round it to?: ";
-        std::cin >> userRound;
-        roundDec(userDecimal, userRound);
-
+        userDecimal = std::stof(userDecimalStr);
+        userRound = std::stoi(userRoundStr);
         // Rounding visually the decimal so even
         // if there were no decimal places, you can see how many.
-        std::cout << std::fixed << std::setprecision(userRound) <<
-        userDecimal <<
-        " rounded was to " <<
+        std::cout <<userDecimal << " rounded was to " <<
         userRound << " decimal places.";
     } catch(std::invalid_argument) {
-        std::cout << "Invalid input.";
+        std::cout << "\nInvalid input.";
     }
 }
